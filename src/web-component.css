@@ -1,0 +1,14 @@
+.broken-container {
+	height:600px;
+    width: 90%;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 5%;
+    /* background-color:lavender */
+}
+
+.button {
+    height:200px;
+    text-align: right;
+    background-color:lavenderblush
+}
