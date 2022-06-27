@@ -4,7 +4,7 @@
 
 var axios = require ("axios");
 
-let API_URL = "http://localhost:8080/v1/graphql";
+let API_URL = "https://graphql-engine-e4vhest3va-uc.a.run.app/v1/graphql";
 
 
 const get_test = async() => {
@@ -82,12 +82,12 @@ const get_test3 = async(d, lat, lng) => {
   return ({success: true, data:r.data.data.get_beacon_clusters_within})
 }
 const get_clusters = async(lat_max, lat_min, lon_max, lon_min, n) => {
-    console.log("get_test4", lat_max, lat_min, lon_max, lon_min );
+    console.log("get_clusters", lat_max, lat_min, lon_max, lon_min );
    
     const graphqlQuery = {
         "operationName": "MyQuery",
         "query": `query MyQuery {
-            get_beacon_clusters_within_box2(args: { lat_max: ${lat_max}, lat_min: ${lat_min}, lon_max: ${lon_max}, lon_min: ${lon_min}, no_of_clusters: ${n}}) {
+          get_beacon_clusters_within_box(args: {lat_max: ${lat_max}, lat_min: ${lat_min}, lon_max: ${lon_max}, lon_min: ${lon_min}, no_of_clusters: 10}) {
             cid
             count
             c_y
@@ -106,7 +106,7 @@ const get_clusters = async(lat_max, lat_min, lon_max, lon_min, n) => {
     if(!r.data.data){
       return ({success: false, data: []})
     }
-    return ({success: true, data:r.data.data.get_beacon_clusters_within_box2})
+    return ({success: true, data:r.data.data.get_beacon_clusters_within_box})
 }
 
 
@@ -114,7 +114,7 @@ const get_markers = async(lat_max, lat_min, lon_max, lon_min) => {
     const graphqlQuery = {
         "operationName": "MyQuery",
         "query": `query MyQuery {
-            get_beacon_points_within_box3(args: {lat_max: ${lat_max}, lat_min: ${lat_min}, lon_max: ${lon_max}, lon_min: ${lon_min}}) {
+            get_beacon_points_within_box(args: {lat_max: ${lat_max}, lat_min: ${lat_min}, lon_max: ${lon_max}, lon_min: ${lon_min}}) {
               c_x
               c_y
             }
@@ -131,7 +131,7 @@ const get_markers = async(lat_max, lat_min, lon_max, lon_min) => {
     if(!r.data.data){
       return ({success: false, data: []})
     }
-    return ({success: true, data:r.data.data.get_beacon_points_within_box3})
+    return ({success: true, data:r.data.data.get_beacon_points_within_box})
 }
 
 

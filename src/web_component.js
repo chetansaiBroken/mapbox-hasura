@@ -143,6 +143,7 @@ function Web_component() {
                     type: "Feature", geometry: { type: "Point", coordinates: [r[i].c_x, r[i].c_y] },
                     properties: {
                         title: "Mapbox",
+                        size: (r[i].count/total)*200
                         // description: "Balurghat, West Bengal, India",
                     },
                 })

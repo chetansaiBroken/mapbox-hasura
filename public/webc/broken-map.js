@@ -77,7 +77,7 @@ class BrokenMap extends HTMLElement {
                         type: "FeatureCollection",
                         features: [],
                     },
-                    // cluster: true,
+                    cluster: true,
                     clusterMaxZoom: 14,
                     clusterRadius: 50
                 });
@@ -124,7 +124,7 @@ class BrokenMap extends HTMLElement {
                     source: 'clusters',
                     paint: {
                         'circle-color': '#DC143C',
-                        'circle-radius': 12,
+                        'circle-radius': ['number', ['get', 'size'], 100],
                         'circle-stroke-width': 1,
                         'circle-stroke-color': '#FFFFFF'
                     }
